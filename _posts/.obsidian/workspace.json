@@ -1,0 +1,171 @@
+{
+  "main": {
+    "id": "0d2ea0bb851728b3",
+    "type": "split",
+    "children": [
+      {
+        "id": "4d85fe577ad417be",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "58b91edab426360b",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "2019-08-09-title.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "68e0ef724e9be924",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "2023-08-19-깃헙블로그를 시작했다!.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          }
+        ],
+        "currentTab": 1
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "e40e7f2441636f57",
+    "type": "split",
+    "children": [
+      {
+        "id": "44022a571b799ae6",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "ea1bd13e6ae0c1dd",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "72d8dceb9d0c3a17",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "cdf4d46eedbd264f",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 209.5
+  },
+  "right": {
+    "id": "cfbec42f8e4d0970",
+    "type": "split",
+    "children": [
+      {
+        "id": "af1022533fe4fadf",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "76130300c8688a71",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "2023-08-19-깃헙블로그를 시작했다!.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "0ea9d252170abd95",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "2023-08-19-깃헙블로그를 시작했다!.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "1d3082d51bd1172b",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "68dd257af7376aa3",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "2023-08-19-깃헙블로그를 시작했다!.md"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false
+    }
+  },
+  "active": "68e0ef724e9be924",
+  "lastOpenFiles": [
+    "2019-08-09-title.md",
+    "2023-08-19-깃헙블로그를 시작했다!.md",
+    "2019-08-08-text-and-typography.md",
+    "2019-08-11-customize-the-favicon.md",
+    "temps/Untitled.md",
+    "temps"
+  ]
+}
