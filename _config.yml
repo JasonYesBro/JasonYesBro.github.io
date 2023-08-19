@@ -1,5 +1,8 @@
 # The Site Configuration
 
+include:
+  - _javascript
+
 # Import the theme
 theme: jekyll-theme-chirpy
 
@@ -173,9 +176,6 @@ compress_html:
   blanklines: false
   ignore:
     envs: [development]
-
-include:
-  - _javascript
 
 exclude:
   - "*.gem"
