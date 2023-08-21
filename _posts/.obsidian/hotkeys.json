@@ -1,45 +1,44 @@
 {
-  "insert-current-date": [
+  "editor:toggle-source": [
     {
       "modifiers": [
-        "Mod",
-        "Shift"
+        "Mod"
       ],
-      "key": "D"
-    }
-  ],
-  "insert-current-time": [
-    {
-      "modifiers": [
-        "Mod",
-        "Shift"
-      ],
-      "key": "H"
+      "key": "Q"
     }
   ],
   "editor:insert-callout": [
     {
       "modifiers": [
+        "Mod",
         "Shift"
       ],
-      "key": "Enter"
+      "key": "C"
     }
   ],
-  "daily-notes": [
+  "insert-current-date": [
+    {
+      "modifiers": [
+        "Mod"
+      ],
+      "key": "H"
+    }
+  ],
+  "insert-current-time": [
+    {
+      "modifiers": [
+        "Mod"
+      ],
+      "key": "M"
+    }
+  ],
+  "insert-template": [
     {
       "modifiers": [
         "Mod",
         "Shift"
       ],
-      "key": "O"
-    }
-  ],
-  "editor:toggle-fold": [
-    {
-      "modifiers": [
-        "Mod"
-      ],
-      "key": "\\"
+      "key": "I"
     }
   ]
 }

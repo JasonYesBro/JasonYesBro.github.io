@@ -1,19 +1,16 @@
 /*
 --------------------------- --------------------------- --------------------------- 
 --------------------------- --------------------------- --------------------------- 
-	Mado Miniflow - Obsidian Theme by hydescarf
-	https://github.com/hydescarf/Obsidian-Theme-Mado-Miniflow
+	Mado 11 - Obsidian Theme by hydescarf
+	https://github.com/hydescarf/Obsidian-Theme-Mado-11
 --------------------------- --------------------------- --------------------------- 
 --------------------------- --------------------------- --------------------------- 
 */
 
 body{
-	/* --accent-h: 210; */
-	/* --accent-s: 93%; */
-	/* --accent-l: 62%; */
-	--accent-h: 254;
-	--accent-s: 80%;
-	--accent-l: 68%;
+	--accent-h: 210;
+	--accent-s: 93%;
+	--accent-l: 62%;
 	
 	--bgcolor-h:204;
 	--bgcolor-s:45%;
@@ -45,6 +42,7 @@ body{
 	
 	--header-height:43px;
 	--tab-stacked-header-width:53px;
+	--vault-name-font-size:14px;
 	
 	
 	/* custom */
@@ -53,7 +51,7 @@ body{
 	--panel-radius:8px;
 	--window-radius:23px;
 	--button-padding-icon:7px;
-	--button-padding-long:7px 15px;
+	--button-padding-long:11px 15px;
 	
 	--background-fourth:var(--color-base-00-0);
 	--background-fifth:var(--color-base-20-0);
@@ -71,6 +69,8 @@ body{
 	--italic-color:var(--color-italic);
 	--inline-code-color:var(--color-red);
 	
+	--hovering-trigger-size:1px;
+	
 	
 }
 body.is-translucent{
@@ -78,10 +78,9 @@ body.is-translucent{
 	--background-secondary:var(--color-base-20-trans);
 	--background-fourth:var(--color-base-00-0-trans);
 }
-body.toggle-tab-height{
-	--header-height:35px;
+body:is(:not(.css-settings-manager),.toggle-easy-toggle){
+	--hovering-trigger-size:13px;
 }
-
 
 .theme-light,
 .is-mobile.theme-light,
@@ -93,6 +92,7 @@ body.toggle-tab-height{
 	--color-base-20:hsla(calc(var(--bgcolor-h) + 6), calc(var(--bgcolor-s) - 0%), calc(var(--bgcolor-l) - 0%), 1);
 	
 	--color-base-00-trans:hsla(calc(var(--bgcolor-h) - 0), calc(var(--bgcolor-s) - 0%), calc(var(--bgcolor-l) - 0%), 0.5); /*for transparency background*/
+	--color-base-00-trans-alt:hsla(calc(var(--bgcolor-h) - 0), calc(var(--bgcolor-s) - 35%), calc(var(--bgcolor-l) - 7%), 0.8); /* alt for transparency background sidebar (hidden, sliding mode) */
 	--color-base-20-trans:hsla(calc(var(--bgcolor-h) + 6), calc(var(--bgcolor-s) - 8%), calc(var(--bgcolor-l) - 1%), 0.5);
 	--color-base-00-0:hsla(calc(var(--bgcolor-h) - 0), calc(var(--bgcolor-s) - 12%), calc(var(--bgcolor-l) + 4%), 1); /* very white */
 	--color-base-20-0:hsla(calc(var(--bgcolor-h) + 0), calc(var(--bgcolor-s) - 35%), calc(var(--bgcolor-l) - 5%), 0.1); /* hovered version for above */
@@ -129,6 +129,7 @@ body.toggle-tab-height{
 	--color-base-20:hsla(calc(var(--bgcolor-h) - 1), calc(var(--bgcolor-s) + 7%), calc(var(--bgcolor-l) - 4%), 1);
 	
 	--color-base-00-trans:hsla(calc(var(--bgcolor-h) - 0), calc(var(--bgcolor-s) - 0%), calc(var(--bgcolor-l) - 0%), 0.5); /*for transparency background*/
+	--color-base-00-trans-alt:hsla(calc(var(--bgcolor-h) - 0), calc(var(--bgcolor-s) - 0%), calc(var(--bgcolor-l) - 6%), 0.8); /* alt for transparency background sidebar (hidden, sliding mode) */
 	--color-base-20-trans:hsla(calc(var(--bgcolor-h) - 1), calc(var(--bgcolor-s) + 7%), calc(var(--bgcolor-l) - 4%), 0.5);
 	--color-base-00-0:hsla(calc(var(--bgcolor-h) - 0), calc(var(--bgcolor-s) - 0%), calc(var(--bgcolor-l) + 3%), 0.9); /* very white */
 	--color-base-20-0:hsla(calc(var(--bgcolor-h) - 0), calc(var(--bgcolor-s) - 7%), calc(var(--bgcolor-l) - 9%), 0.1); /* hovered version for above */
@@ -243,10 +244,9 @@ body.theme-grayscale.theme-dark{
 	--accent-l: 63%;
 }
 
-body.toggle-tab-height-stacked{
-	--tab-stacked-header-width:33px;
+body.mod-macos{
+	--frame-left-space:80px;
 }
-
 
 
 
@@ -266,7 +266,7 @@ body, body.is-translucent{
 }
 
 /* Background Wave design */
-body:not(.toggle-wave-background):before{
+body.toggle-wave-background:before{
 	content:"";
 	position:absolute;
     width:100%;
@@ -278,7 +278,7 @@ body:not(.toggle-wave-background):before{
 	-webkit-mask-repeat:no-repeat;
     background-color:var(--color-accent-2);
 	transform:rotateZ(180deg);
-	opacity:0.5;
+	opacity:0.3;
 }
 
 /* remove padding-top when fullscreen in obsidian-ver titlebar */
@@ -311,22 +311,34 @@ body:not(.is-mobile):is(:not(.css-settings-manager),.toggle-scrollbar-overlay) .
 }
 
 
-/* remove backgrounds for wave design background */
+/* remove backgrounds */
 .workspace,
 .workspace-tabs .workspace-leaf,
 .workspace-ribbon,
 .workspace-split.mod-root,
-.workspace-tab-header-container,
-.workspace-split.mod-root .view-content{ /* remove background as parent will be the one to have it instead */
+.workspace-split.mod-root .view-content,
+body.is-hidden-frameless:not(.is-fullscreen):is(.is-focused,) .titlebar-button-container:is(.mod-right,.mod-left),
+.workspace-tab-header-container{ /* remove background as parent will be the one to have it instead */
 	background:none;
 }
 
 
 /* remove background to adapt translucent mode */
 .is-translucent:not(.is-fullscreen) .titlebar,
-.is-translucent.is-hidden-frameless:not(.is-fullscreen) .titlebar-button-container.mod-right{
+.mod-root .workspace-tabs .workspace-leaf,
+body.is-translucent.is-hidden-frameless:not(.is-fullscreen) .titlebar-button-container:is(.mod-right,.mod-left){
 	background:none;
 }
+
+/* force background color as it is unnoticable during sliding(hidden) mode*/
+body.is-translucent:is(:not(.css-settings-manager),.toggle-side-ribbons) .side-dock-ribbon.mod-left,
+body.is-translucent:is(:not(.css-settings-manager),.toggle-sidebar-buttons) .mod-top:is(.mod-top-left-space,.mod-top-right-space) .workspace-tab-header-container,
+body.is-translucent:is(:not(.css-settings-manager),.toggle-tab-section) .workspace-split.mod-vertical.mod-root .workspace-tab-header-container{
+	background:var(--color-base-00-trans-alt)!important;
+}
+
+
+
 
 
 /* remove distinguishing-borders on sidebars and headers */
@@ -344,97 +356,355 @@ body:not(.is-mobile):is(:not(.css-settings-manager),.toggle-scrollbar-overlay) .
 /* Toggle visibility on Sidebar Tab Icons */
 /* and on Left Sidebar (File Explorer) */
 /* and on Toggle Sidebar (3 rows) */
-/* and on Ribbon Icons  */
-/* and on Main Note Tabs */
 /* and on Note Title Header Bar */
-/* and on Titlebar (Window Frame) */
-body:not(.is-mobile):is(:not(.css-settings-manager),.toggle-sidebar-buttons) .workspace-split.mod-horizontal:is(.mod-left-split, .mod-right-split) .workspace-tab-header-container-inner,
-body:not(.is-mobile):is(:not(.css-settings-manager),.toggle-explorer-buttons) .workspace-leaf-content[data-type="file-explorer"] .nav-buttons-container,
-body:not(.is-mobile):not(.css-settings-manager) .sidebar-toggle-button:is(.mod-left, .mod-right),
-body:not(.is-mobile).toggle-sidebar-toggle-left .sidebar-toggle-button.mod-left,
-body:not(.is-mobile).toggle-sidebar-toggle-right .sidebar-toggle-button.mod-right,
-body:not(.is-mobile):is(:not(.css-settings-manager),.toggle-side-ribbons) :is(.side-dock-actions, .side-dock-settings),
-body:not(.is-mobile).toggle-tab-section .workspace-split.mod-vertical.mod-root :is(.workspace-tabs:not(.mod-stacked) .workspace-tab-header, .workspace-tab-header-new-tab, .workspace-tab-header-tab-list),
+/* and on Titlebar */
+body:not(.is-mobile):is(:not(.css-settings-manager),.toggle-sidebar-buttons) .workspace-split.mod-horizontal:is(.mod-left-split, .mod-right-split) .workspace-tab-header-container,
+body:not(.is-mobile):is(:not(.css-settings-manager),.TEB-hide-vertical) .workspace-leaf-content[data-type="file-explorer"] .nav-buttons-container,
+body:not(.is-mobile):is(.TEB-hide-horizontal,.TEB-show-vertical,.TEB-show-horizontal) .workspace-leaf-content[data-type="file-explorer"] .nav-buttons-container,
+body:not(.is-mobile):is(:not(.css-settings-manager),.toggle-sidebar-toggle) .workspace-split .sidebar-toggle-button,
 body.toggle-note-header .workspace-split.mod-vertical.mod-root .view-header,
 body:not(.is-mobile):is(:not(.css-settings-manager),.toggle-titlebar-buttons) .titlebar{
 	opacity:0;
-	transition:opacity 0.15s;
+	transition:opacity 0.1s;
 }
-body .workspace-split.mod-horizontal:is(.mod-left-split, .mod-right-split) .workspace-tab-header-container:hover .workspace-tab-header-container-inner,
+
+body .workspace-split.mod-horizontal:is(.mod-left-split, .mod-right-split) .workspace-tab-header-container:hover,
 body .workspace-leaf-content[data-type="file-explorer"] .nav-header:hover .nav-buttons-container,
-body .workspace-ribbon.side-dock-ribbon.mod-left:hover :is(.sidebar-toggle-button.mod-left, .side-dock-actions,.side-dock-settings),
-body .workspace-split.mod-vertical.mod-root .workspace-tab-header-container:hover:hover:hover:hover div,
-body .sidebar-toggle-button:is(.mod-left, .mod-right):hover:hover,
-body .titlebar:hover:hover,
+body .workspace-split.mod-vertical.mod-root .workspace-tab-header-container:hover:hover:hover div,
 body .workspace-split.mod-vertical.mod-root .view-header:hover,
 body.toggle-note-header .workspace-split.mod-vertical.mod-root .view-header:focus-within,
-body.is-grabbing.is-grabbing .app-container:not(.no-transition) .workspace-split .workspace-tabs .workspace-tab-header-container .workspace-tab-header-container-inner,
-body.is-grabbing.is-grabbing.is-grabbing.is-grabbing.is-grabbing .app-container:not(.no-transition) .workspace-split .workspace-tabs .workspace-tab-header-container{
+body .sidebar-toggle-button:hover:hover,
+body .workspace-tab-header-container:hover:hover .sidebar-toggle-button,
+body.is-grabbing.is-grabbing.is-grabbing.is-grabbing .app-container:not(.no-transition) .workspace-split .workspace-tabs .workspace-tab-header-container,
+body .titlebar:hover:hover:hover:hover:hover:hover:hover:hover:hover{
 	opacity:1;
 }
 
 
-
-
-/* remove border-bottom below left-sidebar-toggle button */
-.workspace-ribbon.mod-left:before{
-	border:none;
-}
-
-/* Make spacing to match collapsed left-ribbon-dock */
-body:not(.is-mobile) .workspace:not(.is-right-sidedock-open) .workspace-split.mod-vertical.mod-root{
-	padding-right:var(--ribbon-width);
-}
-/* Make spacing for left side to match the right spacing during pop-out window mode */
-body:not(.is-mobile).is-popout-window .workspace-split.mod-vertical.mod-root{
-	padding-left:var(--ribbon-width);
-}
+/* Make spacing to match collapsed left-ribbon-dock, also remove background for wave background */
 .is-mobilebody, .is-mobile .app-container,
 .is-mobile .horizontal-main-container,
 .workspace-ribbon.mod-left.is-collapsed{
 	background:none;
 }
 
-
-/* Fixed width for left and right sidebar */
-:is(.mod-left-split, .mod-right-split) .workspace-leaf-content{
-	display:flex;
-	flex-direction:column;
-	align-self:end;
+/* remove border-bottom below left-sidebar-toggle button */
+.workspace-ribbon.mod-left:before{
+	border:none;
 }
-.mod-right-split .workspace-leaf-content{
-	align-self:start;
-}
-body:is(:not(.css-settings-manager),.toggle-sidebar-fixed-left) .mod-left-split .workspace-leaf-content{
-	max-width:var(--sidebar-size-left);
-}
-body:is(:not(.css-settings-manager),.toggle-sidebar-fixed-right) .mod-right-split .workspace-leaf-content{
-	max-width:var(--sidebar-size-right);
-}
-
-
-body:is(:not(.css-settings-manager),.toggle-sidebar-right-top) .workspace-split.mod-horizontal.mod-right-split .workspace-tabs.mod-top.mod-top-right-space .workspace-tab-container,
-body.toggle-sidebar-left-top .workspace-split.mod-horizontal.mod-left-split .workspace-tabs.mod-top.mod-top-left-space .workspace-tab-container{
-	margin-top:37px;
-}
-
-.workspace-split.mod-horizontal.mod-left-split{
-	padding-right:23px;
-}
-
-.workspace-split.mod-horizontal.mod-right-split{
-	padding-left:23px;
-}
-
-
 
 /* Hide Vault Title */
 body:is(:not(.css-settings-manager),.toggle-vault-title) .nav-folder-title[data-path="/"]{
 	display:none;
 }
-.nav-folder-title[data-path="/"]{
-	margin-bottom:23px;
+
+
+
+
+
+
+
+
+/*
+--------------------------- --------------------------- 
+--------------------------- --------------------------- 
+	Slide-down Toggle Design
+--------------------------- --------------------------- 
+--------------------------- --------------------------- 
+*/
+/* a bit confusing but I tried my best with the documentation :p */
+
+
+/* Toggle drawer-hiding on Ribbon Icons */
+body:not(.is-mobile):is(:not(.css-settings-manager),.toggle-side-ribbons) .workspace-ribbon.side-dock-ribbon{
+	position:absolute;
+	height:100%;
+	left:calc(var(--hovering-trigger-size) - var(--ribbon-width));
+	margin-top:0;
+	padding-top:var(--header-height);
+	background:var(--background-secondary);
+	border-right:var(--border);
+	box-shadow:var(--panel-shadow);
+	z-index:50;
+	transition:left 0.2s, opacity 0.1s;
+	opacity:0;
 }
+body .workspace-ribbon.side-dock-ribbon:hover:hover:hover{
+	left:0;
+	opacity:1;
+}
+
+
+
+
+
+
+/* Toggle drawer-hiding on Top Headers */
+body:not(.is-mobile).is-hidden-frameless:is(:not(.css-settings-manager),.toggle-titlebar-buttons):not(.toggle-topright-opacity) .titlebar-button-container:is(.mod-right,.mod-left){
+	top:calc(1px + var(--hovering-trigger-size) - var(--header-height));
+	background:var(--background-secondary);
+	border:var(--border);
+	border-top:none;
+	border-right:none;
+	border-bottom-left-radius:var(--button-radius);
+	border-bottom-right-radius:var(--button-radius);
+	box-shadow:var(--panel-shadow);
+	z-index:1;
+	-webkit-app-region:no-drag;
+	transition:top 0.2s, opacity 0.1s;
+	opacity:0;
+}
+body:not(.is-mobile).toggle-tab-section .workspace>.workspace-split.mod-vertical.mod-root .workspace-tabs .workspace-tab-header-container,
+body:not(.is-mobile):is(:not(.css-settings-manager),.toggle-sidebar-buttons) .workspace>.workspace-split.mod-horizontal:not(.mod-right-split) .workspace-tabs.mod-top .workspace-tab-header-container,
+body:not(.is-mobile):is(:not(.css-settings-manager),.toggle-sidebar-buttons):not(.toggle-topright-opacity) .workspace>.workspace-split.mod-horizontal.mod-right-split .workspace-tabs.mod-top .workspace-tab-header-container{
+	position:absolute;
+	width:100%;
+	top:calc(var(--hovering-trigger-size) - var(--header-height));
+	background:var(--background-secondary);
+	border:var(--border);
+	border-top:none;
+	border-bottom-left-radius:var(--button-radius);
+	border-bottom-right-radius:var(--button-radius);
+	box-shadow:var(--panel-shadow);
+	z-index:1;
+	-webkit-app-region:no-drag;
+	transition:top 0.2s, opacity 0.1s;
+	opacity:0;
+}
+
+body:not(.is-mobile):is(:not(.css-settings-manager),.toggle-sidebar-buttons) .workspace>.workspace-split.mod-horizontal:not(.mod-right-split) .workspace-tabs.mod-top .workspace-tab-header-container{
+	border-left:none;
+	/* fix for macos */
+	/* margin-left:var(--frame-left-space); */
+	/* width:calc(100% - var(--frame-left-space)); */
+}
+body:not(.is-mobile):is(:not(.css-settings-manager),.toggle-sidebar-buttons):not(.toggle-topright-opacity) .workspace>.workspace-split.mod-horizontal.mod-right-split .workspace-tabs.mod-top .workspace-tab-header-container{
+	border-right:none;
+}
+
+body .workspace-split .workspace-tabs .workspace-tab-header-container:hover:hover:hover:hover:hover:hover:hover,
+body.is-grabbing.is-grabbing.is-grabbing.is-grabbing.is-grabbing .app-container:not(.no-transition) .workspace-split .workspace-tabs .workspace-tab-header-container,
+body .titlebar-button-container:is(.mod-right,.mod-left):hover:hover:hover:hover{
+	top:0;
+	opacity:1;
+}
+
+/* when grabbing, push down left side bar contents */
+.workspace-split.mod-horizontal.mod-left-split .workspace-tabs.mod-top .workspace-leaf{
+	transition:padding-top 0.2s;
+}
+body:is(:not(.css-settings-manager),.toggle-sidebar-buttons).is-grabbing.is-grabbing.is-grabbing.is-grabbing.is-grabbing .app-container:not(.no-transition) .workspace-split.mod-horizontal.mod-left-split .workspace-tabs.mod-top .workspace-leaf{
+	padding-top:var(--header-height);
+} 
+
+
+
+/* Hide hidden tabs behind for those that are in the middle of the panes, also give them a little more space to be hovered */
+body:not(.is-mobile).toggle-tab-section .workspace-tabs:not(.mod-top){
+	overflow:hidden;
+}
+body:not(.is-mobile).toggle-tab-section .workspace>.workspace-split.mod-vertical.mod-root .workspace-tabs .workspace-tab-header-container{
+	top:calc(13px - var(--header-height));
+}
+
+
+
+
+/* resize titlebar height to allow titlebar to response to cursor, this :after is a no-drag element */
+body:is(:not(.css-settings-manager),.toggle-titlebar-buttons):not(.toggle-topright-opacity) .workspace .workspace-tabs.mod-top:is(.mod-top-right-space,.mod-top-left-space) .workspace-tab-header-container:after{
+	height:var(--hovering-trigger-size);
+}
+/* when successfully hovered, expand back the size to full height until the cursor move away */
+body:is(:not(.css-settings-manager),.toggle-titlebar-buttons):not(.toggle-topright-opacity) .titlebar:hover~.app-container .workspace .workspace-tabs.mod-top:is(.mod-top-right-space,.mod-top-left-space) .workspace-tab-header-container:after{
+	height:var(--header-height);
+}
+
+
+/* readjust spacing for window titlebar buttons */
+body:not(.mod-macos):not(.is-mobile).is-hidden-frameless:not(.is-fullscreen):is(:not(.css-settings-manager),.toggle-titlebar-buttons):not(.toggle-topright-opacity) .workspace-tabs.mod-top.mod-top-right-space .workspace-tab-header-container{
+	padding-right:0;
+}
+body:not(.mod-macos):not(.is-mobile).is-hidden-frameless:not(.is-fullscreen):is(:not(.css-settings-manager),.toggle-titlebar-buttons) .workspace-tabs.mod-top.mod-top-left-space .workspace-tab-header-container{
+	padding-left:0;
+}
+
+/* exception for macos */
+/* Unconfirmed: possible bad fix because of macos-css-simulation on windows, thus disabling this but keep for future reference */
+body.mod-macos.is-hidden-frameless:not(.is-mobile):is(:not(.css-settings-manager),.toggle-sidebar-buttons):not(.is-popout-window) .workspace>.workspace-split.mod-horizontal.mod-right-split .workspace-tabs.mod-top .workspace-tab-header-container{
+	/* width:calc(100% - 44px); */
+	/* border-right:var(--border); */
+}
+
+
+/* Toggle drawer-hiding on Top Headers (Middle Tab) and adjust sizing */
+body:not(.is-mobile).toggle-tab-section .workspace>.workspace-split.mod-vertical.mod-root .workspace-tabs .workspace-tab-header-container .workspace-tab-header-container-inner{
+	margin-left:0;
+	padding-block:5px;
+}
+body:not(.is-mobile).toggle-tab-section .workspace>.workspace-split.mod-vertical.mod-root .workspace-tabs .workspace-tab-header-container .workspace-tab-header-inner{
+	padding:20px 9px 13px;
+}
+
+
+/* buttons are blocked by :after no-drag space element, overcome with higher z-index. Also disable drag element since we cant click on fading block anyway */
+body:not(.is-mobile).toggle-tab-section .workspace>.workspace-split.mod-vertical.mod-root .workspace-tabs.mod-top .workspace-tab-header-container>div,
+body:not(.is-mobile):is(:not(.css-settings-manager),.toggle-sidebar-buttons) .workspace>.workspace-split.mod-horizontal .workspace-tabs.mod-top:is(.mod-top-left-space,.mod-top-right-space) .workspace-tab-header-container>div{
+	z-index:1;
+	-webkit-app-region:no-drag;
+}
+
+
+/* make temporary drag area below when buttons are hidden (slide up) */
+/* middle note tab area */
+/* hidden sidebar both side */
+/* when left dock is collapsed */
+/* when right dock is collapsed & not opacity-mode*/
+body:not(.is-mobile).toggle-tab-section .workspace>.workspace-split.mod-vertical.mod-root .workspace-tabs.mod-top .workspace-tab-header-container:before,
+body:not(.is-mobile):is(:not(.css-settings-manager),.toggle-sidebar-buttons) .workspace>.workspace-split.mod-horizontal .workspace-tabs.mod-top .workspace-tab-header-container:before,
+body:not(.is-mobile) .workspace>.workspace-split.mod-horizontal:not(.mod-left-split) .workspace-tabs.mod-top.mod-top-left-space .workspace-tab-header-container:before,
+body:not(.is-mobile):not(.toggle-topright-opacity) .workspace>.workspace-split.mod-horizontal:not(.mod-right-split) .workspace-tabs.mod-top.mod-top-right-space .workspace-tab-header-container:before{
+	position:absolute;
+	content:"";
+	width:100%;
+	height:calc(100% - var(--hovering-trigger-size));
+	left:0;
+	top:var(--header-height);
+	/* background:black; */
+	-webkit-app-region:drag;
+	pointer-events:none; /* preven unclickabled buttons underneath it */
+	transition:height 0.2s;
+}
+body:not(.is-mobile).toggle-tab-section .workspace>.workspace-split.mod-vertical.mod-root .workspace-tabs.mod-top .workspace-tab-header-container:hover:before,
+body:not(.is-mobile) .workspace>.workspace-split.mod-horizontal .workspace-tabs.mod-top:is(.mod-top-left-space,.mod-top-right-space) .workspace-tab-header-container:hover:before{
+	height:0;
+}
+/* macos fix, remove :before height so that button on top-right corner can be hovered */
+/* Unconfirmed: possible bad fix because of macos-css-simulation on windows, thus disabling this but keep for future reference */
+body.mod-macos:not(.is-mobile):is(:not(.css-settings-manager),.toggle-sidebar-buttons) .workspace>.workspace-split.mod-horizontal .workspace-tabs.mod-top.mod-top-right-space .workspace-tab-header-container:before{
+	/* height:0; */
+}
+
+/* resize "drag" space to allow titlebar buttons to be hovered */
+body:not(.is-grabbing):not(.is-fullscreen).is-hidden-frameless .titlebar:hover~.app-container .workspace-split .workspace-tabs.mod-top.mod-top-right-space .workspace-tab-header-container:before{
+	width:calc(100% - var(--frame-right-space));
+}
+body:not(.is-grabbing):not(.is-fullscreen).is-hidden-frameless .titlebar:hover~.app-container .workspace-split .workspace-tabs.mod-top.mod-top-left-space .workspace-tab-header-container:before{
+	width:calc(100% - var(--frame-left-space));
+	left:var(--frame-left-space);
+}
+/* resize "drag" space to allow ribbon dock to be hovered properly, during both hidden and non-hidden sidebar header buttons */
+body:not(.is-grabbing):not(.is-fullscreen).is-hidden-frameless:is(:not(.css-settings-manager),.toggle-side-ribbons) .side-dock-ribbon.mod-left:hover~.workspace-split .workspace-tabs.mod-top.mod-top-left-space .workspace-tab-header-container:before{
+	width:calc(100% - var(--frame-left-space) - var(--ribbon-width));
+	left:calc(var(--frame-left-space) + var(--ribbon-width));
+}
+body:not(.is-grabbing):not(.is-fullscreen).is-hidden-frameless:is(:not(.css-settings-manager),.toggle-side-ribbons) .side-dock-ribbon.mod-left:hover~.workspace-split .workspace-tabs.mod-top.mod-top-left-space .workspace-tab-header-container:before{
+	width:var(--ribbon-width);
+	left:0;
+	-webkit-app-region:no-drag;
+}
+
+
+/* fix minmaxclose buttons not being able to fully hovered when both sidebars are collapsed during toggle-toporight-opacity */
+body.toggle-topright-opacity .titlebar:hover:hover~.app-container .workspace .workspace-tabs.mod-top .workspace-tab-header-container:before{
+	top:0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Toggle drawer-hiding on File Explorer Buttons */
+body:not(.is-mobile):is(:not(.css-settings-manager),.TEB-hide-vertical) .workspace-leaf-content[data-type="file-explorer"] .nav-buttons-container,
+body:not(.is-mobile):is(.TEB-hide-horizontal,.TEB-show-vertical,.TEB-show-horizontal) .workspace-leaf-content[data-type="file-explorer"] .nav-buttons-container{
+	flex-direction:column;
+	position:absolute;
+	background:var(--background-secondary);
+	border:var(--border);
+	border-radius:var(--button-radius);
+	box-shadow:var(--panel-shadow);
+	z-index:1;
+	right:13px;
+	top:13px;
+	pointer-events:none;
+	transition:top 0.2s, opacity 0.2s;
+}
+/* If sidebar header buttons is not hidden and explorer buttons are, adjust the initial position */
+body:not(.is-mobile).css-settings-manager.TEB-hide-vertical:not(.toggle-sidebar-buttons) .workspace-leaf-content[data-type="file-explorer"] .nav-buttons-container,
+body:not(.is-mobile):is(.TEB-hide-horizontal,.TEB-show-horizontal):not(.toggle-sidebar-buttons) .workspace-leaf-content[data-type="file-explorer"] .nav-buttons-container{
+	left:13px;
+	right:unset;
+	top:0px;
+	box-shadow:var(--window-shadow);
+}
+/* macos fix */
+body.mod-macos:not(.is-mobile).css-settings-manager.TEB-hide-vertical:not(.toggle-sidebar-buttons) .workspace-leaf-content[data-type="file-explorer"] .nav-buttons-container,
+body.mod-macos:not(.is-mobile):is(.TEB-hide-horizontal):not(.toggle-sidebar-buttons) .workspace-leaf-content[data-type="file-explorer"] .nav-buttons-container{
+	left:var(--frame-left-space);
+}
+
+body:not(.is-mobile):is(:not(.css-settings-manager),.TEB-hide-vertical) .workspace-leaf-content[data-type="file-explorer"] .nav-buttons-container .nav-action-button,
+body:not(.is-mobile):is(.TEB-hide-horizontal,.TEB-show-vertical,.TEB-show-horizontal) .workspace-leaf-content[data-type="file-explorer"] .nav-buttons-container .nav-action-button{
+	padding:11px;
+}
+
+
+
+/* When hovered on the top header tab, it'll also show the file explorer buttons */
+body .workspace-split.mod-horizontal:is(.mod-left-split,.mod-right-split) .workspace-tabs.mod-top .workspace-tab-header-container:hover:hover+.workspace-tab-container .workspace-leaf-content[data-type="file-explorer"] .nav-buttons-container,
+body .workspace-leaf-content[data-type="file-explorer"] .nav-buttons-container:hover:hover{
+	pointer-events:initial;
+	top:calc(var(--header-height) - 1px);
+	opacity:1;
+}
+/* If sidebar header buttons is not hidden and explorer buttons are, adjust the revealing position */
+body:not(.toggle-sidebar-buttons).css-settings-manager .workspace-split.mod-horizontal:is(.mod-left-split,.mod-right-split) .workspace-tabs.mod-top .workspace-tab-header-container:hover:hover+.workspace-tab-container .workspace-leaf-content[data-type="file-explorer"] .nav-buttons-container,
+body:not(.toggle-sidebar-buttons).css-settings-manager .workspace-leaf-content[data-type="file-explorer"] .nav-buttons-container:hover:hover{
+	pointer-events:initial;
+	top:0px;
+	opacity:1;
+}
+body:not(.toggle-sidebar-buttons):is(.TEB-show-vertical,.TEB-show-horizontal).css-settings-manager .workspace-leaf-content[data-type="file-explorer"] .nav-buttons-container:hover:hover{
+	top:13px;
+}
+
+
+/* horizontal aligned explorer buttons */
+body:not(.is-mobile):is(.TEB-hide-horizontal,.TEB-show-horizontal) .workspace-leaf-content[data-type="file-explorer"] .nav-buttons-container{
+	flex-direction:row;
+}
+body:not(.is-mobile):not(.is-mobile):is(.TEB-show-vertical,.TEB-show-horizontal) .workspace-leaf-content[data-type="file-explorer"] .nav-buttons-container,
+body:not(.toggle-sidebar-buttons):is(.TEB-show-vertical,.TEB-show-horizontal) .workspace-split.mod-horizontal:is(.mod-left-split,.mod-right-split) .workspace-tabs.mod-top .workspace-tab-header-container:hover:hover+.workspace-tab-container .workspace-leaf-content[data-type="file-explorer"] .nav-buttons-container{
+	pointer-events:initial;
+	opacity:1;
+	right:13px;
+	left:unset;
+	top:13px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -452,18 +722,16 @@ body:is(:not(.css-settings-manager),.toggle-vault-title) .nav-folder-title[data-
 .workspace-tab-header-container{
 	padding:0;
 }
+
 /* Extend margin beneath it */
 .workspace-split.mod-vertical.mod-root .workspace-tab-header-container{
 	margin:0 0 11px 0;
 }
-body.toggle-tab-height .workspace-split.mod-vertical.mod-root .workspace-tab-header-container{
-	margin:0 0 5px 0;
-}
 
 /* Remove top-margin and increase gap in between tabs */
 .workspace-split.mod-vertical.mod-root .workspace-tab-header-container-inner{
-	margin:0 -5px;
-	gap:0;
+	margin:0 0 0 23px;
+	gap:var(--size-2-2);
 	padding-top:0;
 }
 
@@ -473,9 +741,7 @@ body.toggle-tab-height .workspace-split.mod-vertical.mod-root .workspace-tab-hea
 .workspace .mod-root .workspace-tab-header-inner::after{ /* Remove border-right on tabs that are not active */
 	display:none;
 }
-body.is-translucent .workspace-split.mod-vertical.mod-root .workspace-tabs:not(.mod-stacked) .workspace-leaf{
-	background:var(--background-primary)!important;
-}
+
 
 
 
@@ -484,112 +750,33 @@ body.is-translucent .workspace-split.mod-vertical.mod-root .workspace-tabs:not(.
 /* Tab design */
 .workspace-split.mod-vertical.mod-root .workspace-tab-header{
 	padding:0;
-	box-shadow:none;
-	margin-top:0;
-	background:none;
-	padding:5px 3px;
-}
-.workspace-split.mod-vertical.mod-root .workspace-tabs:not(.mod-stacked) .workspace-tab-header-inner{
-	padding:29px 11px 20px;
 	border-radius:6px;
 	border:1px solid transparent;
 	box-shadow:none;
 	margin-top:-13px;
 	/* background:var(--background-secondary); */
 }
-.workspace-split.mod-vertical.mod-root .workspace-tabs:not(.mod-stacked) .workspace-tab-header.is-active .workspace-tab-header-inner{
-	background:var(--background-primary);
+.workspace-split.mod-vertical.mod-root .workspace-tab-header.is-active{
+	background:var(--background-fourth);
 	border:var(--border);
-	box-shadow:var(--panel-shadow);
 }
-.workspace-split.mod-vertical.mod-root .workspace-tabs:not(.mod-stacked) .workspace-tab-header:not(.is-active):hover .workspace-tab-header-inner{
-	background:var(--background-modifier-hover);
+.workspace-split.mod-vertical.mod-root .workspace-tab-header-inner{
+	padding:27px 11px 13px;
 }
 
-
-/* Remove small space on the tab header, as its 100% is based on parent's width+padding-right when right sidebar is collapsed */
-body:not(.is-mobile):not(.is-fullscreen) .workspace:not(.is-right-sidedock-open) .mod-top-right-space .workspace-tab-header-container{
-	padding-right:calc(var(--frame-right-space) - var(--ribbon-width));
-}
-body:not(.is-mobile):not(.is-fullscreen) .workspace:not(.is-right-sidedock-open) .workspace-tabs.mod-top-right-space .workspace-tab-header-container:after{
-	width:calc(var(--frame-right-space) - var(--ribbon-width));
-}
-body:not(.is-mobile).is-fullscreen .workspace:not(.is-right-sidedock-open) .mod-top-right-space .workspace-tab-header-container{
-	margin-right:calc(1px - var(--ribbon-width) + 4px);
+/* Prevent sticking-to-top design during obsidian window frame mode */
+body.is-frameless:not(.is-hidden-frameless) .workspace-split.mod-vertical.mod-root .workspace-tabs.mod-top,
+body.is-frameless:not(.is-hidden-frameless) .workspace-split.mod-horizontal.mod-right-split .workspace-tabs.mod-top{
+	border-top:var(--border);
 }
 
 /* remove margin-top of tab headers that block the possibilities to implement pseudo-clickable area */
-.mod-left-split .workspace-tab-header-container-inner,
-.mod-right-split .workspace-tab-header-container-inner{
+.workspace-split.mod-horizontal.mod-left-split .workspace-tab-header-container-inner,
+.workspace-split.mod-horizontal.mod-right-split .workspace-tab-header-container-inner{
 	margin-top:0;
 	padding:0;
 	gap:0;
 }
-
-
-/* Prevent sticking-to-top design during obsidian window frame mode */
-/* 2nd rows are for independent tabs that are not stick to the top */
-/* 3rd row pseudo-clickable area during different tab design */
-body.is-frameless:not(.is-hidden-frameless):not(.is-fullscreen) .workspace-split.mod-vertical.mod-root .workspace-tabs.mod-top .workspace-tab-header-container,
-.workspace-split.mod-vertical.mod-root .workspace-tabs:not(.mod-top) .workspace-tab-header-container,
-body.toggle-tab-design .workspace-split.mod-vertical.mod-root .workspace-tabs .workspace-tab-header-container{
-	height:auto;
-	margin-bottom:5px;
-}
-body.is-frameless:not(.is-hidden-frameless):not(.is-fullscreen) .workspace-split.mod-vertical.mod-root .workspace-tabs.mod-top .workspace-tab-header,
-.workspace-split.mod-vertical.mod-root .workspace-tabs:not(.mod-top) .workspace-tab-header,
-body.toggle-tab-design .workspace-split.mod-vertical.mod-root .workspace-tabs .workspace-tab-header{
-	padding-block:5px;
-}
-body.is-frameless:not(.is-hidden-frameless):not(.is-fullscreen) .workspace-split.mod-vertical.mod-root .workspace-tabs.mod-top .workspace-tab-header-inner,
-.workspace-split.mod-vertical.mod-root .workspace-tabs:not(.mod-top) .workspace-tab-header-inner,
-body.toggle-tab-design .workspace-split.mod-vertical.mod-root .workspace-tabs .workspace-tab-header-inner{
-	padding:4px 11px;
-	margin-top:2px;
-}
-
-
-
-
-/* when header tabs are switched to compact size */
-body.is-frameless:not(.is-hidden-frameless):not(.is-fullscreen).toggle-tab-height .workspace-split.mod-vertical.mod-root .workspace-tabs.mod-top .workspace-tab-header-inner,
-body.toggle-tab-height .workspace-split.mod-vertical.mod-root .workspace-tabs:not(.mod-top) .workspace-tab-header-inner,
-body.toggle-tab-design.toggle-tab-height .workspace-split.mod-vertical.mod-root .workspace-tabs .workspace-tab-header-inner{
-	padding:1px 11px;
-}
-body.is-frameless:not(.is-hidden-frameless):not(.is-fullscreen).toggle-tab-height .workspace-split.mod-vertical.mod-root .workspace-tabs.mod-top .workspace-tab-header-inner,
-body.toggle-tab-height .workspace-split.mod-vertical.mod-root .workspace-tabs:not(.mod-top) .workspace-tab-header-inner,
-body.toggle-tab-design.toggle-tab-height .workspace-split.mod-vertical.mod-root .workspace-tabs .workspace-tab-header-inner{
-	padding:1px 11px;
-}
-body.toggle-tab-height .workspace-split.mod-vertical.mod-root .workspace-tabs .workspace-tab-header-inner{
-	padding:23px 11px 17px;
-}
-body.toggle-tab-height .workspace-split svg.svg-icon{
-	--icon-size:var(--icon-s);
-}
-body.toggle-tab-height .workspace-split.mod-vertical.mod-root .workspace-tab-header svg.svg-icon{
-	--icon-size:var(--icon-xs);
-}
-body.toggle-tab-height .workspace-split.workspace-horizontal:is(.mod-left-split,.mod-right-split) .sidebar-toggle-button,
-body.toggle-tab-height .workspace-ribbon .sidebar-toggle-button{
-	height:var(--header-height);
-	--icon-size:var(--icon-s);
-}
-
-
-/* match vertical align for alternative tab design and compact mode */
-body.is-frameless:not(.is-hidden-frameless):not(.is-fullscreen) .workspace-split.mod-vertical.mod-root .workspace-tabs.mod-top .workspace-tab-header-container :is(.workspace-tab-header-new-tab, .workspace-tab-header-tab-list, .sidebar-toggle-button) .clickable-icon,
-body.toggle-tab-design .workspace-split.mod-vertical.mod-root .workspace-tab-header-container :is(.workspace-tab-header-new-tab, .workspace-tab-header-tab-list, .sidebar-toggle-button) .clickable-icon,
-body:not(.toggle-tab-design) .workspace-split.mod-vertical.mod-root .workspace-tabs:not(.mod-top) .workspace-tab-header-container :is(.workspace-tab-header-new-tab, .workspace-tab-header-tab-list, .sidebar-toggle-button) .clickable-icon{
-	margin-top:4px;
-}
-body.toggle-tab-design:not(.toggle-tag-height) .workspace-split.mod-vertical.mod-root .workspace-tab-header-container :is(.workspace-tab-header-new-tab, .workspace-tab-header-tab-list, .sidebar-toggle-button) .clickable-icon:before{
-	height:calc(var(--ribbon-width) + 6px);
-	margin-top:-6px;
-}
-
-
 
 
 
@@ -598,6 +785,10 @@ body.toggle-tab-design:not(.toggle-tag-height) .workspace-split.mod-vertical.mod
 .workspace-split.mod-vertical.mod-root .view-header{
 	margin-block:7px;
 	background:none;
+}
+/* prevent dragging on title */
+.workspace-split.mod-vertical.mod-root .view-header .view-header-title-container>div{
+	-webkit-app-region:no-drag;
 }
 /* remove title fading element */
 .view-header-title-container:not(.mod-at-end):after{
@@ -612,9 +803,34 @@ body.toggle-tab-design:not(.toggle-tag-height) .workspace-split.mod-vertical.mod
 	padding:3px 7px;
 }
 
+/* make space for top-right button */
+.sidebar-toggle-button.mod-right{
+	padding-right:4px;
+}
+
+/* macos fixes for top-right buttons */
+/* Unconfirmed: possible bad fix because of macos-css-simulation on windows, thus disabling this but keep for future reference */
+.mod-macos.is-hidden-frameless:not(.is-popout-window) .sidebar-toggle-button.mod-right{
+	/* border:var(--border); */
+	/* padding:4px; */
+	/* border-top:none; */
+	/* border-radius:var(--button-radius); */
+}
+.mod-macos .workspace:not(.is-right-sidedock-open) .sidebar-toggle-button.mod-right{
+	/* border-left:none; */
+}
+
+
+
+
 
 /* Stacked Mode styling */
-
+body:not(.toggle-tab-section) .workspace-split.mod-vertical.mod-root .workspace-tabs.mod-stacked .workspace-tab-header-container{
+	margin-bottom:0;
+}
+body:not(.toggle-tab-section) .workspace-split.mod-vertical.mod-root .workspace-tabs.mod-stacked{
+	border-radius:0;
+}
 body .workspace-split.mod-vertical.mod-root .workspace-tabs.mod-stacked .workspace-tab-header-container>.workspace-tab-header-new-tab{
 	order:1;
 	margin-right:var(--size-4-1);
@@ -626,34 +842,22 @@ body .workspace-split.mod-vertical.mod-root .workspace-tabs.mod-stacked .workspa
 	order:3;
 }
 
-
-/* overflow for visible shadow, though not working nicely */
-.workspace .mod-root .workspace-tabs.mod-stacked .workspace-tab-container{
-	/* overflow: visible; */
-}
 .workspace-split.mod-vertical.mod-root .workspace-tabs.mod-stacked .workspace-tab-header{
 	margin:0;
 	padding-top:7px;
-	border-top-left-radius:var(--window-radius);
-	/* border-bottom-left-radius:var(--window-radius); */
+	/* border-top-left-radius:var(--window-radius); */
 	box-shadow:none;
 	border-top:1px solid var(--color-accent-1);
 	border-left:1px solid var(--color-accent-1);
 	border-right:none;
 	border-bottom:none;
-	/* box-shadow:var(--window-shadow-left); */
-}
-body.toggle-note-radius .workspace-split.mod-vertical.mod-root .workspace-tabs.mod-stacked .workspace-tab-header{
-	border-bottom-left-radius:var(--window-radius);
 }
 .workspace-split.mod-vertical.mod-root .workspace-tabs.mod-stacked .workspace-tab-header+.workspace-leaf{
-	border-top-left-radius:0;
-	/* border-bottom-right-radius:var(--window-radius); */
+	/* border-top-left-radius:0; */
 	border-top:var(--border);
 	border-image:linear-gradient(90deg, var(--color-accent-1) 0, var(--tab-outline-color) 60%, transparent 90%) 1;
-	/* box-shadow:var(--window-shadow-right); */
 	box-shadow:none;
-	border-bottom-left-radius:0;
+	background-color:var(--background-primary);
 }
 /* Disable transparency on main note during translucent mode due to unreadable issue */
 body.is-translucent .workspace-split.mod-vertical.mod-root .workspace-tabs.mod-stacked :is(.workspace-leaf, .workspace-tab-header){
@@ -667,18 +871,24 @@ body.is-translucent .workspace-split.mod-vertical.mod-root .workspace-tabs.mod-s
 
 
 /* Border radius on Pane design, however, not adjusted for multiple panes */
-body:not(.is-mobile) .workspace-split.mod-vertical.mod-root .workspace-leaf{
-	border-radius:var(--window-radius);
-	border-bottom-right-radius:0;
-	border-bottom-left-radius:0;
-	box-shadow:var(--window-shadow);
+body:not(.is-mobile) .workspace-split.mod-vertical.mod-root .workspace-tabs{
+	border:var(--border);
+	border-right:none;
+	border-top:none;
+	background-color:var(--background-primary);
 }
-body:not(.is-mobile).toggle-note-radius .workspace-split.mod-vertical.mod-root{
-	padding-bottom:23px;
+/* hard override original important'd background */
+body.is-translucent .workspace-split.mod-vertical.mod-root .workspace-tabs{
+	background-color:var(--background-primary)!important;
 }
-body:not(.is-mobile).toggle-note-radius .workspace-split.mod-vertical.mod-root .workspace-leaf{
-	border-radius:var(--window-radius);
+body:not(.is-mobile):is(:not(.css-settings-manager),.toggle-topleft-radius) .workspace-split.mod-vertical.mod-root>hr+.workspace-tabs:not(.mod-stacked),
+body:not(.is-mobile):is(:not(.css-settings-manager),.toggle-topleft-radius) .workspace-split.mod-vertical.mod-root>hr+.workspace-split>hr+.workspace-tabs:not(.mod-stacked),
+body:not(.is-mobile):is(:not(.css-settings-manager),.toggle-topleft-radius) .workspace-split.mod-vertical.mod-root>hr+.workspace-split>hr+.workspace-split>hr+.workspace-tabs:not(.mod-stacked),
+body:not(.is-mobile):is(:not(.css-settings-manager),.toggle-topleft-radius).toggle-tab-section .workspace-split.mod-vertical.mod-root .workspace-tabs.mod-stacked,
+body:not(.is-mobile):is(:not(.css-settings-manager),.toggle-topleft-radius) .workspace-split.mod-vertical.mod-root .workspace-tabs.mod-stacked .workspace-tab-header{
+	border-top-left-radius:var(--window-radius);
 }
+
 
 
 /* Overflow to allow shadow flowing out */
@@ -690,7 +900,6 @@ body:not(.is-mobile) .workspace-tabs .workspace-tab-container{
 /* Minimum padding to push down cut-off scrollbars when show-tab-title-bar is disabled */
 body:not(.show-view-header) .workspace-split.mod-vertical.mod-root .workspace-leaf{
 	padding-top:23px;
-	background-color:var(--background-primary);
 }
 body.is-mobile .workspace-split.mod-vertical.mod-root .workspace-leaf{
 	padding-top:0;
@@ -705,9 +914,8 @@ body.is-phone .view-header, .show-view-header .view-header{
 }
 
 /* Gap inbetween panes */
-.workspace-split.mod-vertical.mod-root,
-.workspace-split.mod-vertical.mod-root .workspace-split:not(.mod-horizontal){
-	gap:23px;
+.workspace-split.mod-vertical.mod-root{
+	gap:0;
 }
 
 /* Main Note padding space, only in middle pane, not sidebars*/
@@ -717,6 +925,61 @@ body.is-phone .view-header, .show-view-header .view-header{
 .workspace-split.mod-vertical.mod-root .markdown-source-view .cm-content{
 	padding-inline:13px;
 }
+
+
+
+
+
+
+
+/* SIDEBAR - RIGHT DESIGN */
+
+/* instead of padding-block, we do bottom and a separate one below, as the first panel may requires the tab header to be hidden to the top */
+.workspace-split.mod-horizontal.mod-right-split{
+	background:var(--background-primary);
+	padding-bottom:var(--header-height);
+}
+.workspace-split.mod-horizontal.mod-right-split .workspace-tabs.mod-top.mod-top-right-space .workspace-tab-container{
+	padding-top:var(--header-height);
+}
+
+.workspace-split.mod-horizontal.mod-right-split .workspace-leaf{
+	background:var(--background-fourth);
+	border:var(--border);
+	border-radius:var(--panel-radius);
+	box-shadow:var(--panel-shadow);
+	margin-inline:33px;
+}
+body.toggle-sidebar-right-color .workspace-split.mod-horizontal.mod-right-split .workspace-leaf{
+	background:var(--background-secondary);
+}
+
+.workspace-split.mod-horizontal.mod-right-split .view-content{
+	padding:var(--size-4-4);
+}
+.workspace-split.mod-horizontal.mod-right-split .view-content .markdown-rendered{
+	padding-block:0;
+}
+.workspace-split.mod-horizontal.mod-right-split .inline-title{
+	padding-block:0.5em;
+}
+
+/* hard override translucent mode transparent background */
+body.is-translucent .workspace-split.mod-horizontal.mod-right-split .workspace-leaf{
+	background-color:var(--background-fourth)!important;
+}
+body.is-translucent.toggle-sidebar-right-color .workspace-split.mod-horizontal.mod-right-split .workspace-leaf{
+	background-color:var(--background-secondary)!important;
+}
+
+
+
+
+
+
+
+
+
 
 
 
@@ -732,6 +995,8 @@ body.is-phone .view-header, .show-view-header .view-header{
 body.is-translucent .menu{
 	background:var(--color-base-00);
 }
+
+
 
 
 
@@ -793,6 +1058,12 @@ body.is-translucent .modal{
 
 
 
+
+
+
+
+
+
 /*
 --------------------------- --------------------------- 
 --------------------------- --------------------------- 
@@ -800,7 +1071,6 @@ body.is-translucent .modal{
 --------------------------- --------------------------- 
 --------------------------- --------------------------- 
 */
-
 
 .modal{
 	border-radius:var(--window-radius);
@@ -835,6 +1105,8 @@ body:is(:not(.css-settings-manager), .toggle-note-animation) .workspace-split.mo
 	60% { transform:translateY(10%); }
 	100% { transform:translateY(0%); }
 }
+
+
 
 
 
@@ -899,13 +1171,13 @@ body:not(.native-scrollbars) .modal-close-button{
 	--icon-stroke:unset;
 	align-items:center;
 	padding-block:4.5px;
+	-webkit-app-region:no-drag;
+	z-index:1;
 }
 .workspace-tab-header-new-tab,
 .workspace-tab-header-tab-list{
 	padding-block:4.5px;
 }
-
-
 
 
 
@@ -953,6 +1225,7 @@ body:not(.native-scrollbars) .modal-close-button{
 
 
 
+
 /*
 --------------------------- --------------------------- 
 --------------------------- --------------------------- 
@@ -969,6 +1242,7 @@ button{
 	transition:0.05s ease-in;
 	transition-property:background, color;
 	position:relative;
+	-webkit-app-region:no-drag;
 }
 
 /* Left-border style on long button, just for file-explorer */
@@ -986,7 +1260,7 @@ button{
 	transition-property:height, transform;
 }
 .nav-file-title.is-active::before{
-	height:70%;
+	height:50%;
 	transform:translateY(-50%);
 }
 
@@ -1018,17 +1292,6 @@ body:is(:not(.css-settings-manager),.toggle-explorer-indent) .nav-folder.mod-roo
 :is(.nav-folder-title, .nav-file-title):hover{
 	filter:brightness(0.9);
 }
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -1071,6 +1334,7 @@ code{
 .cm-s-obsidian span.cm-inline-code.cm-hmd-indented-code{
 	background:var(--code-background);
 }
+
 
 .markdown-rendered pre{
 	overflow-x: auto;
@@ -1280,7 +1544,6 @@ ul > li.task-list-item.is-checked *,
 
 
 /* Markdown Callout */
-
 .callout{
 	border:1px solid rgba(var(--callout-color), 0.3);
     background-color: rgba(var(--callout-color), 0.07);
@@ -1306,14 +1569,6 @@ ul > li.task-list-item.is-checked *,
 .markdown-source-view.mod-cm6 .callout .callout{
 	margin:1em 0;
 }
-
-
-
-
-
-
-
-
 
 
 
@@ -2121,7 +2376,6 @@ div.callout[data-callout*="mado-panel-list"] ul li{
 	text-align:left;
 	width:100%;
 	overflow:visible;
-	min-height:auto;
 }
 [class*="mado-panel-list"][class*="mado-panel-link"] .markdown-preview-sizer>div ul li a:not(.tag),
 div.callout[data-callout*="mado-panel-list"][data-callout*="-link"] ul li a:not(.tag){
@@ -2295,7 +2549,6 @@ div.callout[data-callout*="mado-panel-task"]>.callout-content>ul>li.is-checked:n
 
 
 
-
 /*
 --------------------------- --------------------------- 
 --------------------------- --------------------------- 
@@ -2374,7 +2627,6 @@ div.kanban-plugin__lane-title-count{
 .workspace-split.mod-vertical.mod-root :is([data-type="database-plugin"],.kanban-plugin) .markdown-preview-view{
 	padding-inline:0;
 }
-
 
 
 
@@ -2527,13 +2779,13 @@ div.kanban-plugin__lane-title-count{
 
 /* @settings
 
-name: Mado Miniflow
-id: mado-miniflow
+name: Mado 11
+id: mado-11
 settings:
 	- 
 		id: intro-section
 		title: Introduction
-		description: "The setting here covers only the very basic to avoid complexity fatigue. That being said, feel free to suggest anything by submitting a Github issue on: https://github.com/hydescarf/Obsidian-Theme-Mado-Miniflow"
+		description: "The setting here covers only the very basic to avoid complexity fatigue. That being said, feel free to suggest anything by submitting a Github issue on: https://github.com/hydescarf/Obsidian-Theme-Mado-11"
 		type: heading
 		collapsed: true
 		level: 3
@@ -2552,7 +2804,7 @@ settings:
 		title: Theme Color
 		type: class-select
 		allowEmpty: false
-		default: theme-violette
+		default: theme-daisy-blue
 		options:
 			-
 				label: Daisy Blue
@@ -2603,19 +2855,19 @@ settings:
 		default-dark: '#'
 	- 
 		id: toggle-wave-background
-		title: Hide Background Wave Design
+		title: Enable background wave design on left sidebar
 		type: class-toggle
 		default: false
 	- 
-		id: toggle-tab-design
-		title: Enable Alternative Tab Design
+		id: toggle-sidebar-right-color
+		title: Enable alternative background color for right sidebar
 		type: class-toggle
 		default: false
 	- 
-		id: toggle-note-radius
-		title: Enable All-Rounded Corner Note Pane
+		id: toggle-topleft-radius
+		title: Enable rounded top-left corner of the main pane
 		type: class-toggle
-		default: false
+		default: true
 	- 
 		id: toggle-note-animation
 		title: Enable sliding animation on main pane
@@ -2634,22 +2886,23 @@ settings:
 	- 
 	
 	
-		id: toggle-tab-height
-		title: Enable Compact Tab Header
-		type: class-toggle
-		default: false
-	- 
-		id: toggle-tab-height-stacked
-		title: Enable Compact Tab Header (Stacked)
-		description: If you noticed a broken gap after the toggle, just refresh it by clicking on the panes (so that they can readjust themselves).
-		type: class-toggle
-		default: false
-	- 
 		id: toggle-scrollbar-overlay
 		title: Enable Overlay Scrollbar
 		type: class-toggle
 		description: Overlay will provide you wider field of contents, but in return, scrollbar will have to overlap onto it.
 		default: true
+	- 
+		id: toggle-easy-toggle
+		title: Enable Easy Toggle
+		type: class-toggle
+		description: Enabling Easy Toggle gives you more triggerable area to reveal the hidden buttons.
+		default: true
+	- 
+		id: toggle-topright-opacity
+		title: Enable Alternative Toggle Style (Top-right)
+		description: Enabling this will switch the toggle style from "sliding" to "fading".
+		type: class-toggle
+		default: false
 	- 
 	
 	
@@ -2670,13 +2923,8 @@ settings:
 		type: class-toggle
 		default: true
 	- 
-		id: toggle-sidebar-toggle-left
-		title: Hide Sidebar Toggle Button (Left)
-		type: class-toggle
-		default: true
-	- 
-		id: toggle-sidebar-toggle-right
-		title: Hide Sidebar Toggle Button (Right)
+		id: toggle-sidebar-toggle
+		title: Hide Sidebar Toggle Button 
 		type: class-toggle
 		default: true
 	- 
@@ -2687,8 +2935,26 @@ settings:
 	- 
 		id: toggle-explorer-buttons
 		title: Hide File Explorer Buttons
-		type: class-toggle
-		default: true
+		description: If they are hidden, you may reveal the buttons by hovering at the "Tab Header Buttons" above it.
+		type: class-select
+		allowEmpty: false
+        default: TEB-hide-vertical
+        options:
+            - 
+                label: Hide (Vertical)
+                value: TEB-hide-vertical
+            - 
+                label: Hide (Horizontal)
+                value: TEB-hide-horizontal
+            - 
+                label: Show (Normal)
+                value: TEB-show-normal
+            - 
+                label: Show (Vertical)
+                value: TEB-show-vertical
+            - 
+                label: Show (Horizontal)
+                value: TEB-show-horizontal
 	- 
 		id: toggle-vault-title
 		title: Hide File Explorer Vault Title (Unhoverable)
@@ -2728,53 +2994,6 @@ settings:
 	- 
 		id: toggle-scrollbar
 		title: Hide Scrollbar
-		type: class-toggle
-		default: true
-	- 
-	
-	
-		id: sidebar-section
-		title: Sidebar Section
-		type: heading
-		description: With a fixed width, the contents of sidebar will pull towards to the middle whenever you resize. This gives you a better focus at the center of a bigger screen.
-		collapsed: true
-		level: 4
-	- 
-		id: toggle-sidebar-fixed-left
-		title: Fixed Width (Left)
-		type: class-toggle
-		default: true
-	- 
-		id: toggle-sidebar-fixed-right
-		title: Fixed Width (Right)
-		type: class-toggle
-		default: true
-	- 
-		id: sidebar-size-left
-		title: Width size if fixed (Left)
-		type: variable-number-slider
-		default: 270
-		format: px
-        min: 200
-        max: 1000
-        step: 10
-	- 
-		id: sidebar-size-right
-		title: Width size if fixed (Right)
-		type: variable-number-slider
-		default: 270
-		format: px
-        min: 200
-        max: 1000
-        step: 10
-	- 
-		id: toggle-sidebar-left-top
-		title: Additional space on top of left sidebar
-		type: class-toggle
-		default: false
-	- 
-		id: toggle-sidebar-right-top
-		title: Additional space on top of right sidebar
 		type: class-toggle
 		default: true
 	- 

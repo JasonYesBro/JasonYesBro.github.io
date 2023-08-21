@@ -1,39 +1,64 @@
 {
   "main": {
-    "id": "0d2ea0bb851728b3",
+    "id": "4052237fae4263f1",
     "type": "split",
     "children": [
       {
-        "id": "4d85fe577ad417be",
+        "id": "cc2207e97a2412c9",
         "type": "tabs",
         "children": [
           {
-            "id": "68e0ef724e9be924",
+            "id": "bb0dfb5a9f558219",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "2023-08-20-자료구조.md",
+                "file": "2019-08-09-title.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "962ef55433539c80",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "2023-08-21-스트림.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "1dc5683f6bba1957",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "2023-08-21-스트림.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
-        ]
+        ],
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
   },
   "left": {
-    "id": "e40e7f2441636f57",
+    "id": "fd3a3dd1b4cd1131",
     "type": "split",
     "children": [
       {
-        "id": "44022a571b799ae6",
+        "id": "e5c54ef94be52341",
         "type": "tabs",
         "children": [
           {
-            "id": "ea1bd13e6ae0c1dd",
+            "id": "1fab6835be337c38",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
@@ -43,7 +68,7 @@
             }
           },
           {
-            "id": "72d8dceb9d0c3a17",
+            "id": "b21c648fabd32bf7",
             "type": "leaf",
             "state": {
               "type": "search",
@@ -58,7 +83,7 @@
             }
           },
           {
-            "id": "cdf4d46eedbd264f",
+            "id": "3e1e300d2a150d7c",
             "type": "leaf",
             "state": {
               "type": "bookmarks",
@@ -69,24 +94,24 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200,
+    "width": 300,
     "collapsed": true
   },
   "right": {
-    "id": "cfbec42f8e4d0970",
+    "id": "bd824c2d40e69535",
     "type": "split",
     "children": [
       {
-        "id": "af1022533fe4fadf",
+        "id": "507fbad69390fe86",
         "type": "tabs",
         "children": [
           {
-            "id": "76130300c8688a71",
+            "id": "d4f4be99c8f7ea92",
             "type": "leaf",
             "state": {
               "type": "backlink",
               "state": {
-                "file": "2023-08-20-자료구조.md",
+                "file": "2023-08-21-스트림.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -98,19 +123,19 @@
             }
           },
           {
-            "id": "0ea9d252170abd95",
+            "id": "1cec0b9f43476262",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "2023-08-20-자료구조.md",
+                "file": "2023-08-21-스트림.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
             }
           },
           {
-            "id": "1d3082d51bd1172b",
+            "id": "d5b6b814cef32f32",
             "type": "leaf",
             "state": {
               "type": "tag",
@@ -121,12 +146,12 @@
             }
           },
           {
-            "id": "68dd257af7376aa3",
+            "id": "77c8c1febb555b7b",
             "type": "leaf",
             "state": {
               "type": "outline",
               "state": {
-                "file": "2023-08-20-자료구조.md"
+                "file": "2023-08-21-스트림.md"
               }
             }
           }
@@ -147,16 +172,12 @@
       "command-palette:명령어 팔레트 열기": false
     }
   },
-  "active": "68e0ef724e9be924",
+  "active": "1dc5683f6bba1957",
   "lastOpenFiles": [
-    "2023-08-19-깃헙블로그를 시작했다!.md",
     "2019-08-09-title.md",
+    "2023-08-21-스트림.md",
     "2023-08-20-자료구조.md",
-    "2023-08-20.md",
-    "2019-08-11-customize-the-favicon.md",
-    "2019-08-08-text-and-typography.md",
-    "2019-08-08-write-a-new-post.md",
-    "temps/Untitled.md",
-    "temps"
+    "2023-08-19-깃헙블로그를 시작했다!.md",
+    "template.md"
   ]
 }
