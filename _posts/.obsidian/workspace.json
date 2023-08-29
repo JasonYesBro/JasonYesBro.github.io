@@ -67,8 +67,7 @@
               }
             }
           }
-        ],
-        "currentTab": 4
+        ]
       }
     ],
     "direction": "vertical"
@@ -97,7 +96,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "path:/",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -135,7 +134,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "2023-08-23-JVM과메모리구조.md",
+                "file": "2019-08-09-title.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -152,7 +151,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "2023-08-23-JVM과메모리구조.md",
+                "file": "2019-08-09-title.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -175,7 +174,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "2023-08-23-JVM과메모리구조.md"
+                "file": "2019-08-09-title.md"
               }
             }
           }
@@ -196,10 +195,10 @@
       "command-palette:명령어 팔레트 열기": false
     }
   },
-  "active": "b21c648fabd32bf7",
+  "active": "bb0dfb5a9f558219",
   "lastOpenFiles": [
-    "2023-08-22-배열.md",
     "2023-08-23-JVM과메모리구조.md",
+    "2023-08-22-배열.md",
     "2023-08-21-스트림.md",
     "2019-08-09-title.md",
     "2023-08-20-자료구조.md",
