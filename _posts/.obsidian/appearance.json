@@ -1,5 +1,7 @@
 {
-  "accentColor": "",
-  "cssTheme": "Mado 11",
-  "theme": "moonstone"
+  "accentColor": "#563da9",
+  "cssTheme": "Moonlight",
+  "theme": "moonstone",
+  "interfaceFontFamily": "D2Coding",
+  "textFontFamily": "Hack"
 }
