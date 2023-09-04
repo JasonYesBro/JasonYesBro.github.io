@@ -30,5 +30,4 @@ hash값을 사용하는 Collection 은 객체가 논리적으로 같은지 비�
 		1. 다름 -> false -> 다른객체
 3. 같음
 	1. 동등한 객체
-
-![image](./../assets/img/hashcodeandequals.png)
+![image](https://github.com/JasonYesBro/JasonYesBro.github.io/assets/126242681/367cece7-4d29-4dcc-9da7-bf72ca006042)
